@@ -29,10 +29,6 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   /**************************************************************************** */
 
   //! END @TODO1
-
-  interface Query {
-    image_url: string;
-  }
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", async (req, res) => {
