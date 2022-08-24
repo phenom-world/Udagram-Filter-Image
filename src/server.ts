@@ -41,8 +41,13 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
       throw new Error("Query param 'image_url' must be of type string");
     }
     const response = await filterImageFromURL(image_url);
-    await deleteLocalFiles([response]);
-    res.send(response);
+    res.status(200).sendFile(response, (err: Error) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(500);
+      }
+      deleteLocalFiles([response]);
+    });
   });
 
   // Start the Server
